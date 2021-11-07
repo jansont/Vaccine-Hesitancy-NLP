@@ -43,7 +43,11 @@ def check_for_keywords(text):
 def check_for_retweet(text):
     return 'RT' in text 
 
-def filter_JSON(path, keep_retweets = False, preprocess = False, test = False):
+
+def check_for_link(text):
+    return 'http' in text 
+
+def filter_JSON(path, keep_links = False, keep_retweets = False, preprocess = False, test = False):
     '''
     @Params
     File: file path name of JSON file type
@@ -69,7 +73,8 @@ def filter_JSON(path, keep_retweets = False, preprocess = False, test = False):
                 tweet_data = json.loads(line)
                 text = tweet_data['full_text']
                 is_retweet = check_for_retweet(text)
-                if (not is_retweet) or keep_retweets:
+                is_link = check_for_link(text)
+                if (not is_retweet and not is_link) or keep_retweets or keep_links :
                     text = text.lower()
                     contains_vaccine_keywords = check_for_keywords(text)
                    

@@ -25,7 +25,10 @@ Run this file:
 
 '''
 
-day = '260'
+path = '/Users/theojanson/Project/Capstone/Data/ID_datasets/'
+print('Input file number')
+day = input()
+
 path =  '/Users/theojanson/Project/Capstone/Data/'
 preprocess_while_filtering = True
 
@@ -40,6 +43,7 @@ def main():
 
 	df, process_time, error_count = filter_JSON(path = json_file_path,
 												keep_retweets = False,
+												keep_links = False, 
 												preprocess = preprocess_while_filtering,
 												test = False)
 
