@@ -25,14 +25,12 @@ Run this file:
 
 '''
 
-path = '/Users/theojanson/Project/Capstone/Data/ID_datasets/'
-print('Input file number')
-day = input()
+
 
 path =  '/Users/theojanson/Project/Capstone/Data/'
 preprocess_while_filtering = True
 
-def main():
+def main(day):
 
 	hydrated_dataset_folder = 'Hydrated_Datasets/'
 	json_file_path = path + hydrated_dataset_folder + f'corona_tweets_{day}.jsonl'
@@ -74,4 +72,13 @@ def main():
 	print(f'{len(df)} tweets retained after filtering.')
 
 if __name__ == "__main__":
-	main()
+
+	path = '/Users/theojanson/Project/Capstone/Data/ID_datasets/'
+	print('Input starting day number')
+	start = input()
+	print('Input end day number')
+	end = input()
+
+	days = [i for i in range(start, end)]
+	for day in days:
+		main(day)
